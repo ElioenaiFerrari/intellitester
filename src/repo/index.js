@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 const Repo = {
-  all: R.curry((model, params) => {
+  all: R.curry((model, params = null) => {
     return Promise.resolve(model.find(params))
       .then(R.always)
       .catch(R.always)

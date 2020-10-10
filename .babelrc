@@ -1,4 +1,7 @@
 {
-  "presets": ["env"],
-  "plugins": [["module-alias", [{ "src": "src/", "expose": "@" }]]]
+  "presets": ["@babel/env"],
+  "plugins": [
+    ["module-alias", { "src": "src/", "expose": "@" }],
+    ["@babel/plugin-transform-spread", { "loose": true }]
+  ]
 }

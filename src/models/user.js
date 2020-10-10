@@ -2,26 +2,31 @@ import mongoose from 'mongoose';
 import Bcrypt from 'bcryptjs';
 import * as R from 'ramda';
 
-const schema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+const schema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      default: 'user',
+      enum: ['admin', 'manager', 'user'],
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    default: 'user',
-    enum: ['admin', 'manager', 'user'],
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 schema.pre('save', function (next) {
   const gen_salts = (salts) => Bcrypt.genSaltSync(salts);
