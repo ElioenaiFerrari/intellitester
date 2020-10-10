@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "graphql": "^15.3.0",
+    "ibm-watson": "^5.7.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.8",
+    "pm2": "^4.5.0",
+    "ramda": "^0.27.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-module-alias": "^1.6.0",
+    "babel-preset-env": "^1.7.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "dev": "nodemon -w . -w .env --exec babel-node src/main.js",
+    "prod": "pm2 start pm2.config.js"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "presets": ["env"],
+  "plugins": [["module-alias", [{ "src": "src/", "expose": "@" }]]]
+}
