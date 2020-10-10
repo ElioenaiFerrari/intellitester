@@ -11,15 +11,21 @@ const schema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: 'Bot',
       required: true,
+      unique: true,
+    },
+    node: {
+      type: String,
+      required: true,
     },
     status: {
       type: String,
       enum: ['BROKEN', 'OK', 'EMPTY'],
-      required: true,
+      // required: true,
+      default: 'EMPTY',
     },
     answers: {
       type: Object,
-      required: true,
+      // required: true,
     },
   },
   {
