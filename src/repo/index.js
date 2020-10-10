@@ -21,6 +21,20 @@ const Repo = {
       .catch(R.always)
       .then(R.call);
   }),
+
+  delete: R.curry((model, id, params) => {
+    return Promise.resolve(model.findOneAndDelete({ _id: id }.params))
+      .then(R.always)
+      .catch(R.always)
+      .then(R.call);
+  }),
+
+  update: R.curry((model, id, params) => {
+    return Promise.resolve(model.findOneAndUpdate({ _id: id }, params))
+      .then(R.always)
+      .catch(R.always)
+      .then(R.call);
+  }),
 };
 
 export default Repo;

@@ -12,7 +12,33 @@ const BotController = {
   },
 
   index: (req = request, res = response) => {
-    Repo.all(Bot).then(Send.json(res, 200)).catch(Send.json(res, 400));
+    Repo.all(Bot, req.query)
+      .then(Send.json(res, 200))
+      .catch(Send.json(res, 400));
+  },
+
+  show: (req = request, res = response) => {
+    const { id } = req.params;
+
+    Repo.find(Bot, { _id: id })
+      .then(Send.json(res, 200))
+      .catch(Send.json(res, 400));
+  },
+
+  update: (req = request, res = response) => {
+    const { id } = req.params;
+
+    Repo.update(Bot, id, req.body)
+      .then(Send.json(res, 200))
+      .catch(Send.json(res, 400));
+  },
+
+  destroy: (req = request, res = response) => {
+    const { id } = req.params;
+
+    Repo.delete(Bot, id, req.body)
+      .then(Send.json(res, 200))
+      .catch(Send.json(res, 400));
   },
 };
 
