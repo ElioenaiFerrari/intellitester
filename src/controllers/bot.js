@@ -24,7 +24,7 @@ const BotController = {
   show: (req = request, res = response) => {
     const { id } = req.params;
 
-    Repo.find(Bot, { _id: id, team: req.auth.user })
+    Repo.find(Bot, { _id: id, team: req.auth.user }, { populate: 'team' })
       .then(
         R.ifElse(
           R.isNil,

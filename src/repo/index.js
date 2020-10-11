@@ -8,8 +8,8 @@ const Repo = {
       .then(R.call);
   }),
 
-  find: R.curry((model, params) => {
-    return Promise.resolve(model.findOne(params))
+  find: R.curry((model, params, { populate } = {}) => {
+    return Promise.resolve(model.findOne(params).populate(populate))
       .then(R.always)
       .catch(R.always)
       .then(R.call);
