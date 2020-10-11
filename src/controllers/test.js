@@ -47,7 +47,7 @@ const TestController = {
 
   update: (req = request, res = response) => {
     const { bot_id } = req.params;
-    const { asks, test_id, expected_node } = req.body;
+    const { asks, test_id } = req.body;
 
     const get_received_nodes = R.pipe(
       R.prop('result'),
@@ -58,10 +58,10 @@ const TestController = {
       R.values
     );
 
-    const mount_object = R.curry((ask, { expected_node }, received_node) => ({
+    const mount_object = R.curry((ask, params, received_node) => ({
       ask,
       node: received_node[0],
-      ok: expected_node === received_node[0],
+      ok: params.expected_node === received_node[0],
     }));
 
     const send_message = R.curry((params, test, ask) => {
@@ -86,7 +86,7 @@ const TestController = {
       return Repo.update(
         Test,
         { _id: test_id, bot: bot_id },
-        { answers, status, expected_node }
+        { answers, status }
       );
     };
 

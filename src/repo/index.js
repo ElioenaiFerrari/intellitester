@@ -30,7 +30,7 @@ const Repo = {
   }),
 
   update: R.curry((model, by, params) => {
-    return Promise.resolve(model.findOneAndUpdate(by, params))
+    return Promise.resolve(model.findOneAndUpdate(by, params, { new: true }))
       .then(R.always)
       .catch(R.always)
       .then(R.call);
