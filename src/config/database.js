@@ -15,6 +15,7 @@ const connect = () => {
     .connect(Env.get('DB_HOST'), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     })
     .then(connection_status)
     .catch(connection_status)

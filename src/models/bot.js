@@ -7,6 +7,14 @@ const schema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    team: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        unique: true,
+      },
+    ],
     name: {
       type: String,
       required: true,

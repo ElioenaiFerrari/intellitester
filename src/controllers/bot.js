@@ -6,7 +6,11 @@ import Bot from '@/models/bot';
 
 const BotController = {
   store: (req = request, res = response) => {
-    Repo.create(Bot, { ...req.body, owner: req.auth.user })
+    Repo.create(Bot, {
+      ...req.body,
+      owner: req.auth.user,
+      team: [req.auth.user],
+    })
       .then(Send.json(res, 201))
       .catch(Send.json(res, 400));
   },
@@ -20,15 +24,25 @@ const BotController = {
   show: (req = request, res = response) => {
     const { id } = req.params;
 
-    Repo.find(Bot, { _id: id })
-      .then(Send.json(res, 200))
+    Repo.find(Bot, { _id: id, team: req.auth.user })
+      .then(
+        R.ifElse(
+          R.isNil,
+          () => Send.json(res, 401, { error: 'unauthorized' }),
+          Send.json(res, 200)
+        )
+      )
       .catch(Send.json(res, 400));
   },
 
   update: (req = request, res = response) => {
     const { id } = req.params;
 
-    Repo.update(Bot, { _id: id }, req.body)
+    Repo.update(
+      Bot,
+      { _id: id },
+      { ...req.body, $push: { team: req.body.user } }
+    )
       .then(Send.json(res, 200))
       .catch(Send.json(res, 400));
   },
