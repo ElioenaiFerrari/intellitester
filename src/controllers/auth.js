@@ -14,12 +14,6 @@ const AuthController = {
       .catch(Send.json(res, 400));
   },
 
-  currentUser: (req = request, res = response, next) => {
-    Repo.create(User, req.body)
-      .then(Send.json(res, 201))
-      .catch(Send.json(res, 400));
-  },
-
   signin: (req = request, res = response, next) => {
     const { email, password } = req.body;
 

@@ -7,6 +7,10 @@ const UserController = {
   index: (req = request, res = response) => {
     Repo.all(User).then(Send.json(res, 200)).catch(Send.json(res, 400));
   },
+
+  current: (req = request, res = response, next) => {
+    return Send.json(res, 200, req.auth.user);
+  },
 };
 
 export default UserController;
