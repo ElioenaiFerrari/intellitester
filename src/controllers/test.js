@@ -75,11 +75,11 @@ const TestController = {
       );
     };
 
-    const save_test = (answers, status) => {
+    const save_test = (answers, right) => {
       return Repo.update(
         Test,
         { _id: test_id, bot: bot_id },
-        { answers, status }
+        { answers, right }
       );
     };
 
@@ -88,8 +88,8 @@ const TestController = {
         R.find(R.propEq('ok', false)),
         R.ifElse(
           R.has('node'),
-          () => save_test(answers, 'BROKEN'),
-          () => save_test(answers, 'RIGHT')
+          () => save_test(answers, false),
+          () => save_test(answers, true)
         )
       )(answers);
     };

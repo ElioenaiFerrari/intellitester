@@ -16,9 +16,8 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    status: {
-      type: String,
-      enum: ['BROKEN', 'OK'],
+    right: {
+      type: Boolean,
       // required: true,
     },
     answers: [
