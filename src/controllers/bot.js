@@ -28,7 +28,7 @@ const BotController = {
   update: (req = request, res = response) => {
     const { id } = req.params;
 
-    Repo.update(Bot, id, req.body)
+    Repo.update(Bot, { _id: id }, req.body)
       .then(Send.json(res, 200))
       .catch(Send.json(res, 400));
   },
@@ -36,7 +36,7 @@ const BotController = {
   destroy: (req = request, res = response) => {
     const { id } = req.params;
 
-    Repo.delete(Bot, id, req.body)
+    Repo.delete(Bot, { _id: id }, req.body)
       .then(Send.json(res, 200))
       .catch(Send.json(res, 400));
   },

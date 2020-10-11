@@ -22,8 +22,8 @@ const Repo = {
       .then(R.call);
   }),
 
-  delete: R.curry((model, by, params) => {
-    return Promise.resolve(model.findOneAndDelete(by, params))
+  delete: R.curry((model, by) => {
+    return Promise.resolve(model.findOneAndDelete(by))
       .then(R.always)
       .catch(R.always)
       .then(R.call);

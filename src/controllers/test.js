@@ -111,6 +111,15 @@ const TestController = {
       )
       .catch(Send.json(res, 400));
   },
+
+  destroy: (req = request, res = response) => {
+    const { bot_id } = req.params;
+    const { test_id } = req.body;
+
+    Repo.delete(Test, { _id: test_id, bot: bot_id })
+      .then(Send.json(res, 200))
+      .catch(Send.json(res, 400));
+  },
 };
 
 export default TestController;
