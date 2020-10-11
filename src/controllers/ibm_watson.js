@@ -3,13 +3,6 @@ import * as R from 'ramda';
 import { request, response } from 'express';
 import Send from '@/utils/send';
 
-const i2ai_bot_params = {
-  apikey: 'RoUhQXG4qFsTVgilkTshuVM9W3vcmCH3fYu2CbHvm8Ls',
-  service_url:
-    'https://api.us-south.assistant.watson.cloud.ibm.com/instances/727afc57-4037-4819-8a39-9b3c1c0b237e',
-  skill_id: '719164c2-fef7-4811-ba99-d79975782bd9',
-};
-
 const arcelor_bot_params = {
   apikey: 'b0HRDFp-2Vrc_uwS1PRIEefXSHP2o1hZSQ_LeHvB16dU',
   service_url:

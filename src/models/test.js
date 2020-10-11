@@ -11,22 +11,22 @@ const schema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: 'Bot',
       required: true,
-      unique: true,
     },
-    node: {
+    expected_node: {
       type: String,
       required: true,
     },
     status: {
       type: String,
-      enum: ['BROKEN', 'OK', 'EMPTY'],
-      // required: true,
-      default: 'EMPTY',
-    },
-    answers: {
-      type: Object,
+      enum: ['BROKEN', 'OK'],
       // required: true,
     },
+    answers: [
+      {
+        type: Object,
+        // required: true,
+      },
+    ],
   },
   {
     timestamps: true,

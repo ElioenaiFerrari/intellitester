@@ -22,15 +22,15 @@ const Repo = {
       .then(R.call);
   }),
 
-  delete: R.curry((model, id, params) => {
-    return Promise.resolve(model.findOneAndDelete({ _id: id }.params))
+  delete: R.curry((model, by, params) => {
+    return Promise.resolve(model.findOneAndDelete(by, params))
       .then(R.always)
       .catch(R.always)
       .then(R.call);
   }),
 
-  update: R.curry((model, id, params) => {
-    return Promise.resolve(model.findOneAndUpdate({ _id: id }, params))
+  update: R.curry((model, by, params) => {
+    return Promise.resolve(model.findOneAndUpdate(by, params))
       .then(R.always)
       .catch(R.always)
       .then(R.call);
