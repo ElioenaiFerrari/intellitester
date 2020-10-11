@@ -38,12 +38,24 @@ const BotController = {
   update: (req = request, res = response) => {
     const { id } = req.params;
 
+    const add_user_to_team = R.ifElse(
+      R.has('user'),
+      (body) => ({ $push: { team: body.user } }),
+      () => ({})
+    );
+
     Repo.update(
       Bot,
-      { _id: id },
-      { ...req.body, $push: { team: req.body.user } }
+      { _id: id, owner: req.auth.user },
+      { ...req.body, ...add_user_to_team(req.body) }
     )
-      .then(Send.json(res, 200))
+      .then(
+        R.ifElse(
+          R.isNil,
+          () => Send.json(res, 401, { error: 'unauthorized' }),
+          Send.json(res, 200)
+        )
+      )
       .catch(Send.json(res, 400));
   },
 
