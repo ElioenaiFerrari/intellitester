@@ -11,11 +11,6 @@ const routes = (app) => [
   },
   {
     use: true,
-    name: 'routes/ibm_watson',
-    implement: () => ibm_watson_router(app),
-  },
-  {
-    use: true,
     name: 'routes/bot',
     implement: () => bot_router(app),
   },

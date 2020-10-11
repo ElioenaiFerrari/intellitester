@@ -6,13 +6,6 @@ import Repo from '@/repo';
 import Send from '@/utils/send';
 import IbmWatson from '@/services/ibm_watson';
 
-const i2ai_bot_params = {
-  apikey: 'RoUhQXG4qFsTVgilkTshuVM9W3vcmCH3fYu2CbHvm8Ls',
-  service_url:
-    'https://api.us-south.assistant.watson.cloud.ibm.com/instances/727afc57-4037-4819-8a39-9b3c1c0b237e',
-  skill_id: '719164c2-fef7-4811-ba99-d79975782bd9',
-};
-
 const TestController = {
   index: (req = request, res = response) => {
     const { bot_id } = req.params;
