@@ -1,5 +1,4 @@
 import auth_router from '@/router/auth';
-import ibm_watson_router from '@/router/ibm_watson';
 import bot_router from '@/router/bot';
 import test_router from '@/router/test';
 
