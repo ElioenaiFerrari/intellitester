@@ -61,6 +61,7 @@ const TestController = {
           input: {
             text: ask,
           },
+          context: '<? context ?>',
         })
         .then(R.pipe(get_received_nodes, mount_object(ask, test)));
     });
