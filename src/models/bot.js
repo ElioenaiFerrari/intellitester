@@ -34,6 +34,11 @@ const schema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    dialog_url: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     skill_id: {
       type: String,
       required: true,

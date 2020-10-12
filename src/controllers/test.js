@@ -10,7 +10,7 @@ const TestController = {
   index: (req = request, res = response) => {
     const { bot_id } = req.params;
 
-    Repo.all(Test, { bot: bot_id })
+    Repo.all(Test, { bot: bot_id }, { populate: 'bot' })
       .then(Send.json(res, 200))
       .catch(Send.json(res, 400));
   },
