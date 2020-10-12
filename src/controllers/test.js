@@ -44,17 +44,14 @@ const TestController = {
 
     const get_received_nodes = R.pipe(
       R.prop('result'),
-      R.prop('context'),
-      R.prop('system'),
-      R.prop('dialog_stack'),
-      (received_nodes) => received_nodes[0],
-      R.values
+      R.prop('output'),
+      R.prop('nodes_visited')
     );
 
-    const mount_object = R.curry((ask, params, received_node) => ({
+    const mount_object = R.curry((ask, params, received_nodes) => ({
       ask,
-      node: received_node[0],
-      ok: params.expected_node === received_node[0],
+      node: received_nodes[0],
+      ok: params.expected_node === received_nodes[0],
     }));
 
     const send_message = R.curry((params, test, ask) => {
