@@ -15,9 +15,11 @@ const schema = new mongoose.Schema(
     expected_node: {
       type: String,
       required: true,
+      unique: true,
     },
     right: {
       type: Boolean,
+      default: true,
       // required: true,
     },
     answers: [
