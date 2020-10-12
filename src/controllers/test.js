@@ -107,7 +107,7 @@ const TestController = {
 
   destroy: (req = request, res = response) => {
     const { bot_id } = req.params;
-    const { test_id } = req.body;
+    const { test_id } = req.query;
 
     Repo.delete(Test, { _id: test_id, bot: bot_id })
       .then(Send.json(res, 200))
