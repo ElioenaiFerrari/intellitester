@@ -30,7 +30,7 @@ const AuthController = {
     };
 
     const gen_token = (data) => {
-      return Jwt.sign(data, Env.get('APP_SECRET'), { expiresIn: '1h' });
+      return Jwt.sign(data, Env.get('APP_SECRET'));
     };
 
     const send_result = R.ifElse(

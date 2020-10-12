@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 
 const Repo = {
-  all: R.curry((model, params = null) => {
-    return Promise.resolve(model.find(params))
+  all: R.curry((model, params = null, { populate } = {}) => {
+    return Promise.resolve(model.find(params).populate(populate))
       .then(R.always)
       .catch(R.always)
       .then(R.call);
