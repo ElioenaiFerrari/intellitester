@@ -11,7 +11,8 @@ const AuthMiddleware = {
       R.prop('authorization')
     );
 
-    const has_authorization = R.pipe(R.prop('headers'), R.has('authorization'));
+        
+    const has_authorization = R.pipe(R.prop('headers'), R.has('authorization'),R.split(' '));
     const is_valid_token = (data) => R.equals(R.length(data), 2);
     const decode_token = (token) => jwt.verify(token[0], Env.get('APP_SECRET'));
     const store_user = R.curry((req, user) => (req.auth = user));
@@ -21,7 +22,6 @@ const AuthMiddleware = {
       has_authorization,
       R.pipe(
         get_authorization,
-        R.split(' '),
         R.ifElse(
           is_valid_token,
           R.pipe(R.takeLast(1), decode_token, store_user(req), pass_up),
