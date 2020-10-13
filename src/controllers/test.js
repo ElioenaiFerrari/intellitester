@@ -62,7 +62,8 @@ const TestController = {
             text: ask,
           },
         })
-        .then(R.pipe(get_received_nodes, mount_object(ask, test)));
+        .then(R.pipe(get_received_nodes, mount_object(ask, test)))
+        .catch(Send.json(res, 400));
     });
 
     const go_through_asks = (params) => {
