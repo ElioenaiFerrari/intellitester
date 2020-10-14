@@ -8,11 +8,11 @@ const AuthMiddleware = {
   check: (req = request, res = response, next) => {
     const get_authorization = R.pipe(
       R.prop('headers'),
-      R.prop('authorization')
+      R.prop('authorization'),
+      R.split(' ')
     );
 
-        
-    const has_authorization = R.pipe(R.prop('headers'), R.has('authorization'),R.split(' '));
+    const has_authorization = R.pipe(R.prop('headers'), R.has('authorization'));
     const is_valid_token = (data) => R.equals(R.length(data), 2);
     const decode_token = (token) => jwt.verify(token[0], Env.get('APP_SECRET'));
     const store_user = R.curry((req, user) => (req.auth = user));
