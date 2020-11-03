@@ -6,9 +6,9 @@ module.exports = {
   apps: [
     {
       name: `[${PORT}]${APP_NAME}`,
-      script: 'src/main.js',
+      script: 'build/main.js',
       exec_interpreter: 'babel-node',
-      instances: 'max',
+      instances: 1,
       exec_mode: 'fork_mode',
     },
   ],

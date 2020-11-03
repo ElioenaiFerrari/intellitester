@@ -9,4 +9,4 @@ router.get('/', ParticipationController.index);
 router.put('/:id', ParticipationController.update);
 // router.delete('/:id', ParticipationController.destroy);
 
-export default (app) => app.use('/app/participation', router);
+export default (app) => app.use('/app/participations', router);

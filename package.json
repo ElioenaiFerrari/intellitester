@@ -25,6 +25,7 @@
   },
   "scripts": {
     "dev": "nodemon -w . -w .env --exec babel-node src/main.js",
-    "prod": "pm2 start pm2.config.js"
+    "prod": "yarn build && pm2 start pm2.config.js",
+    "build": "babel src -d build"
   }
 }
